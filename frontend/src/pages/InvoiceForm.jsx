@@ -372,7 +372,7 @@ const InvoiceForm = () => {
                                                     Total
                                                 </label>
                                                 <div className="mt-1 px-3 py-2 bg-gray-50 border border-gray-300 rounded-md text-sm text-gray-900">
-                                                    ${((parseFloat(item.quantity) || 0) * (parseFloat(item.price) || 0)).toFixed(2)}
+                                                    {formatCurrency((parseFloat(item.quantity) || 0) * (parseFloat(item.price) || 0), formData.currency)}
                                                 </div>
                                             </div>
 
@@ -440,7 +440,7 @@ const InvoiceForm = () => {
                                                 <div>
                                                     <span className="text-sm font-medium text-gray-700">Total: </span>
                                                     <span className="text-sm font-semibold">
-                                                        ${((parseFloat(item.quantity) || 0) * (parseFloat(item.price) || 0)).toFixed(2)}
+                                                        {formatCurrency((parseFloat(item.quantity) || 0) * (parseFloat(item.price) || 0), formData.currency)}
                                                     </span>
                                                 </div>
                                                 <button
@@ -465,15 +465,15 @@ const InvoiceForm = () => {
                                 <div className="w-full max-w-xs sm:w-64 space-y-2">
                                     <div className="flex justify-between text-sm">
                                         <span className="text-gray-600">Subtotal:</span>
-                                        <span className="font-medium">${calculatedTotals.subtotal.toFixed(2)}</span>
+                                        <span className="font-medium">{formatCurrency(calculatedTotals.subtotal, formData.currency)}</span>
                                     </div>
                                     <div className="flex justify-between text-sm">
                                         <span className="text-gray-600">Tax ({formData.taxRate}%):</span>
-                                        <span className="font-medium">${calculatedTotals.tax.toFixed(2)}</span>
+                                        <span className="font-medium">{formatCurrency(calculatedTotals.tax, formData.currency)}</span>
                                     </div>
                                     <div className="flex justify-between text-lg font-bold border-t border-gray-200 pt-2">
                                         <span>Total:</span>
-                                        <span>${calculatedTotals.total.toFixed(2)}</span>
+                                        <span>{formatCurrency(calculatedTotals.total, formData.currency)}</span>
                                     </div>
                                 </div>
                             </div>

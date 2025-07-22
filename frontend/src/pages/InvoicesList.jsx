@@ -14,7 +14,6 @@ import {
     Clock,
     AlertCircle,
     Filter,
-    DollarSign,
     FileText
 } from 'lucide-react';
 import toast from 'react-hot-toast';
@@ -263,7 +262,7 @@ import { format } from 'date-fns'; const InvoicesList = () => {
                                         {formatCurrency(invoice.totalAmount, invoice.currency)}
                                     </div>
                                 </div>
-                                
+
                                 <div className="mb-2">
                                     <div className="text-sm font-medium text-gray-900">
                                         {invoice.invoiceNumber}
@@ -272,7 +271,7 @@ import { format } from 'date-fns'; const InvoicesList = () => {
                                         {format(new Date(invoice.createdAt), 'MMM dd, yyyy')}
                                     </div>
                                 </div>
-                                
+
                                 <div className="mb-3">
                                     <div className="text-sm font-medium text-gray-900">
                                         {invoice.clientId?.name || 'Unknown Client'}
@@ -281,11 +280,11 @@ import { format } from 'date-fns'; const InvoicesList = () => {
                                         {invoice.clientId?.company}
                                     </div>
                                 </div>
-                                
+
                                 <div className="text-sm text-gray-500 mb-3">
                                     Due: {format(new Date(invoice.dueDate), 'MMM dd, yyyy')}
                                 </div>
-                                
+
                                 <div className="flex flex-wrap gap-2">
                                     <Link
                                         to={`/invoices/${invoice._id}`}
@@ -382,8 +381,7 @@ import { format } from 'date-fns'; const InvoicesList = () => {
                                             </div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="flex items-center text-sm font-medium text-gray-900">
-                                                <DollarSign className="h-4 w-4 mr-1" />
+                                            <div className="text-sm font-medium text-gray-900">
                                                 {formatCurrency(invoice.totalAmount, invoice.currency)}
                                             </div>
                                         </td>

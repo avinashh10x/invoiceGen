@@ -10,7 +10,6 @@ import {
     CheckCircle,
     Clock,
     AlertCircle,
-    DollarSign,
     Calendar,
     Building,
     User
@@ -307,8 +306,7 @@ const InvoiceDetail = () => {
                                     </div>
                                     <div className="flex justify-between text-lg font-bold border-t border-gray-200 pt-2">
                                         <span>Total:</span>
-                                        <span className="flex items-center">
-                                            <DollarSign className="h-5 w-5 mr-1" />
+                                        <span>
                                             {formatCurrency(invoice.totalAmount, invoice.currency)}
                                         </span>
                                     </div>

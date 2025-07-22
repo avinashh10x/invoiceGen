@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { invoiceAPI, clientAPI } from '../services/api';
 import { formatCurrency } from '../utils/currency';
 import {
-    DollarSign,
     FileText,
     Users,
     TrendingUp,
@@ -89,8 +88,8 @@ const Dashboard = () => {
     const statCards = [
         {
             title: 'Total Revenue',
-            value: `$${processedStats?.totalRevenue?.toLocaleString() || '0'}`,
-            icon: DollarSign,
+            value: `${processedStats?.totalRevenue?.toLocaleString() || '0'}`,
+            icon: TrendingUp,
             color: 'bg-green-500',
             bgColor: 'bg-green-50',
             textColor: 'text-green-600',
@@ -113,7 +112,7 @@ const Dashboard = () => {
         },
         {
             title: 'Pending Amount',
-            value: `$${processedStats?.pendingAmount?.toLocaleString() || '0'}`,
+            value: `${processedStats?.pendingAmount?.toLocaleString() || '0'}`,
             icon: Clock,
             color: 'bg-yellow-500',
             bgColor: 'bg-yellow-50',
