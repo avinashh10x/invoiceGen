@@ -1,0 +1,142 @@
+# 🧪 API Testing File
+# Use this file with REST Client extension in VS Code
+# Or copy the curl commands to your terminal
+
+### Variables
+@baseUrl = http://localhost:5000
+@token = YOUR_JWT_TOKEN_HERE
+
+### 1. Health Check
+GET {{baseUrl}}/health
+
+### 2. Admin Login
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "Admin123!"
+}
+
+### 3. Get Admin Profile
+GET {{baseUrl}}/api/auth/profile
+Authorization: Bearer {{token}}
+
+### 4. Create Client
+POST {{baseUrl}}/api/clients
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "company": "Doe Enterprises",
+  "phone": "+1-555-0123",
+  "address": {
+    "street": "123 Business St",
+    "city": "New York",
+    "state": "NY",
+    "zipCode": "10001",
+    "country": "USA"
+  },
+  "notes": "VIP client"
+}
+
+### 5. Get All Clients
+GET {{baseUrl}}/api/clients
+Authorization: Bearer {{token}}
+
+### 6. Create Invoice
+POST {{baseUrl}}/api/invoices
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "clientId": "REPLACE_WITH_CLIENT_ID",
+  "items": [
+    {
+      "description": "Web Development Services",
+      "quantity": 40,
+      "price": 75.00
+    },
+    {
+      "description": "Domain Registration",
+      "quantity": 1,
+      "price": 15.00
+    }
+  ],
+  "taxRate": 8.5,
+  "dueDate": "2025-08-15",
+  "notes": "Payment due within 30 days",
+  "currency": "USD"
+}
+
+### 7. Get All Invoices
+GET {{baseUrl}}/api/invoices
+Authorization: Bearer {{token}}
+
+### 8. Get Dashboard Statistics
+GET {{baseUrl}}/api/invoices/stats/dashboard
+Authorization: Bearer {{token}}
+
+### 9. Mark Invoice as Paid
+PATCH {{baseUrl}}/api/invoices/REPLACE_WITH_INVOICE_ID/mark-paid
+Authorization: Bearer {{token}}
+
+### 10. Send Invoice via Email
+POST {{baseUrl}}/api/invoices/REPLACE_WITH_INVOICE_ID/send-email
+Authorization: Bearer {{token}}
+
+### 11. Search Clients
+GET {{baseUrl}}/api/clients?search=john&page=1&limit=10
+Authorization: Bearer {{token}}
+
+### 12. Filter Invoices by Status
+GET {{baseUrl}}/api/invoices?status=paid&page=1&limit=10
+Authorization: Bearer {{token}}
+
+### 13. Get Single Client
+GET {{baseUrl}}/api/clients/REPLACE_WITH_CLIENT_ID
+Authorization: Bearer {{token}}
+
+### 14. Update Client
+PUT {{baseUrl}}/api/clients/REPLACE_WITH_CLIENT_ID
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "John Smith",
+  "email": "john.smith@example.com",
+  "company": "Smith Enterprises",
+  "phone": "+1-555-0124",
+  "address": {
+    "street": "456 Updated St",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zipCode": "90210",
+    "country": "USA"
+  },
+  "notes": "Updated client information"
+}
+
+### 15. Get Single Invoice
+GET {{baseUrl}}/api/invoices/REPLACE_WITH_INVOICE_ID
+Authorization: Bearer {{token}}
+
+### 16. Update Invoice
+PUT {{baseUrl}}/api/invoices/REPLACE_WITH_INVOICE_ID
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "items": [
+    {
+      "description": "Updated Web Development Services",
+      "quantity": 50,
+      "price": 80.00
+    }
+  ],
+  "taxRate": 10,
+  "dueDate": "2025-09-15",
+  "notes": "Updated invoice terms"
+}
